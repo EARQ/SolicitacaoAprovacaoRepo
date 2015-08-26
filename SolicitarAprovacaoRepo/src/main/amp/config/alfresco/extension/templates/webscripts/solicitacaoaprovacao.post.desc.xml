@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Solicitação de Aproção Upload</shortname>
+  <description>Solicitação de Aproção Upload</description>
+  <url>/earq/solicitacaoaprovacaoupload</url>
+  <transaction>requiresnew</transaction>
+  <authentication runas="earq_admin_aprovacao">none</authentication>
+</webscript>

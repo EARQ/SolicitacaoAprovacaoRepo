@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="enviaraprovacao" class="earq.alfresco.custom.SendAsEmailActionExecuter"
+		parent="action-executer">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="actionService">
+			<ref bean="ActionService" />
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="QuickShareService">
+			<ref bean="quickShareService" />
+		</property>
+	</bean>
+
+
+	<bean id="tenantService" class="earq.alfresco.custom.CustomMultiTServiceImpl">
+
+		<property name="tenantAdminDAO">
+			<ref bean="tenantAdminDAO" />
+		</property>
+		<!-- <replaced-method name="updateAuthentication" replacer="authenticationReplacer" 
+			/> -->
+	</bean>
+
+	<bean id="webscript.solicitacaoaprovacao.post" class="earq.alfresco.custom.SolicitacaoAprovacaoUpload"
+		parent="webscript">
+		<property name="repository" ref="repositoryHelper" />
+		<property name="quickShareService" ref="QuickShareService" />
+		<property name="serviceRegistry" ref="ServiceRegistry" />
+	</bean>
+
+
+
+	<!-- <bean id="authenticationReplacer" class="org.alfresco.custom.AuthenticationServiceImplCustom"/> -->
+</beans>
